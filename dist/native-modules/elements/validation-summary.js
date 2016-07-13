@@ -1,13 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.ValidationSummary = undefined;
-
-var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
-
-var _aureliaFramework = require("aurelia-framework");
+var _dec, _dec2, _class, _desc, _value, _class2, _descriptor;
 
 function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -54,13 +45,14 @@ function _initializerWarningHelper(descriptor, context) {
     throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var ValidationSummary = exports.ValidationSummary = (_dec = (0, _aureliaFramework.customElement)("validation-summary"), _dec2 = (0, _aureliaFramework.inject)(_aureliaFramework.Element), _dec3 = (0, _aureliaFramework.inlineView)('<template><p class="validation-summary-entry" repeat.for="error of propertyErrors">${error.property} - ${error.error}</p></template>'), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
-    function ValidationSummary(element) {
+import { customElement, inlineView, inject, bindable } from "aurelia-framework";
+
+export var ValidationSummary = (_dec = customElement("validation-summary"), _dec2 = inlineView('<template><ul class="validation-summary" show.bind="propertyErrors.length"><li repeat.for="error of propertyErrors">${error.property} - ${error.error}</li></ul></template>'), _dec(_class = _dec2(_class = (_class2 = function () {
+    function ValidationSummary() {
         
 
         _initDefineProp(this, "validationGroup", _descriptor, this);
 
-        this.element = element;
         this.propertyErrors = [];
     }
 
@@ -93,7 +85,7 @@ var ValidationSummary = exports.ValidationSummary = (_dec = (0, _aureliaFramewor
     };
 
     return ValidationSummary;
-}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "validationGroup", [_aureliaFramework.bindable], {
+}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "validationGroup", [bindable], {
     enumerable: true,
     initializer: null
-})), _class2)) || _class) || _class) || _class);
+})), _class2)) || _class) || _class);

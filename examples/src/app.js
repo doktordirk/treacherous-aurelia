@@ -35,7 +35,7 @@ export class App
             .forProperty("someNestedObject")
                 .addRuleset(nestedRuleset)
             .forProperty("someArray")
-                .addRule("maxLength", 2)
+                .addRule("maxLength", 3)
                 .addRuleForEach("maxValue", 20)
             .build();
     }

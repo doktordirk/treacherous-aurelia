@@ -25,7 +25,7 @@ var bundles = {
         ],
         "options": {
             "inject": true,
-            "minify": true,
+            "minify": false,
             "rev": false
         }
     }

@@ -80,6 +80,8 @@ function gulpFileFromString(filename, string) {
 }
 
 function srcForBabel() {
+  console.log('******************', paths.output + 'index.js', "export * from './" + paths.packageName + "';");
+
   return merge(
     gulp.src(paths.source),
     gulpFileFromString(paths.output + 'index.js', "export * from './" + paths.packageName + "';")
@@ -114,6 +116,7 @@ compileToModules.forEach(function(moduleType){
       .pipe(gulp.dest(paths.output + moduleType));
   });
 });
+
 
 gulp.task('build-dts', function() {
   var tsProject = ts.createProject(

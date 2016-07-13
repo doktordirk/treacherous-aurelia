@@ -16,6 +16,18 @@ Object.keys(_validationStrategy).forEach(function (key) {
     });
 });
 
+var _validationSummary = require("./elements/validation-summary");
+
+Object.keys(_validationSummary).forEach(function (key) {
+    if (key === "default") return;
+    Object.defineProperty(exports, key, {
+        enumerable: true,
+        get: function get() {
+            return _validationSummary[key];
+        }
+    });
+});
+
 var _inlineStrategy = require("./strategy/inline-strategy");
 
 Object.keys(_inlineStrategy).forEach(function (key) {
@@ -45,7 +57,7 @@ function configure(aurelia) {
     aurelia.globalResources("./attributes/validation-group-attribute");
     aurelia.globalResources("./attributes/validation-options-attribute");
     aurelia.globalResources("./attributes/validate-property-attribute");
-    aurelia.globalResources("./elements/validation-summary-element");
+    aurelia.globalResources("./elements/validation-summary");
 
     aurelia.container.registerInstance(_validationStrategy.ValidationStrategy, new _inlineStrategy.InlineStrategy());
 }

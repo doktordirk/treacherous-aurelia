@@ -1,6 +1,6 @@
 "use strict";
 
-System.register(["./strategy/validation-strategy", "./strategy/inline-strategy", "./binding-behaviours/validate-binding-behaviour"], function (_export, _context) {
+System.register(["./strategy/validation-strategy", "./strategy/inline-strategy", "./elements/validation-summary", "./binding-behaviours/validate-binding-behaviour"], function (_export, _context) {
     "use strict";
 
     var ValidationStrategy, InlineStrategy;
@@ -23,14 +23,22 @@ System.register(["./strategy/validation-strategy", "./strategy/inline-strategy",
             }
 
             _export(_exportObj2);
-        }, function (_bindingBehavioursValidateBindingBehaviour) {
+        }, function (_elementsValidationSummary) {
             var _exportObj3 = {};
 
-            for (var _key3 in _bindingBehavioursValidateBindingBehaviour) {
-                if (_key3 !== "default") _exportObj3[_key3] = _bindingBehavioursValidateBindingBehaviour[_key3];
+            for (var _key3 in _elementsValidationSummary) {
+                if (_key3 !== "default") _exportObj3[_key3] = _elementsValidationSummary[_key3];
             }
 
             _export(_exportObj3);
+        }, function (_bindingBehavioursValidateBindingBehaviour) {
+            var _exportObj4 = {};
+
+            for (var _key4 in _bindingBehavioursValidateBindingBehaviour) {
+                if (_key4 !== "default") _exportObj4[_key4] = _bindingBehavioursValidateBindingBehaviour[_key4];
+            }
+
+            _export(_exportObj4);
         }],
         execute: function () {
             function configure(aurelia) {
@@ -38,7 +46,7 @@ System.register(["./strategy/validation-strategy", "./strategy/inline-strategy",
                 aurelia.globalResources("./attributes/validation-group-attribute");
                 aurelia.globalResources("./attributes/validation-options-attribute");
                 aurelia.globalResources("./attributes/validate-property-attribute");
-                aurelia.globalResources("./elements/validation-summary-element");
+                aurelia.globalResources("./elements/validation-summary");
 
                 aurelia.container.registerInstance(ValidationStrategy, new InlineStrategy());
             }
