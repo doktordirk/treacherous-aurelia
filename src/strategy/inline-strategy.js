@@ -1,5 +1,5 @@
-import {ValidationStrategy} from "./validation-strategy";
-import {ClassHelper} from "../helper/class-helper"
+import {ValidationStrategy} from './validation-strategy';
+import {ClassHelper} from '../helper/class-helper';
 
 export class InlineStrategy extends ValidationStrategy
 {
@@ -7,18 +7,18 @@ export class InlineStrategy extends ValidationStrategy
 
     _getElementValidatorId = (element) =>
     {
-        if(!element.getAttribute("id"))
-        { element.setAttribute("id", "unique-" + this._currentCount++); }
+        if(!element.getAttribute('id'))
+        { element.setAttribute('id', 'unique-' + this._currentCount++); }
 
-        return element.getAttribute('id') + "-error-container";
+        return element.getAttribute('id') + '-error-container';
     };
 
     _createErrorElement = (message, element) =>
     {
         var errorContainerName = this._getElementValidatorId(element);
-        var errorContainer = document.createElement("div");
+        var errorContainer = document.createElement('div');
         errorContainer.id = errorContainerName;
-        errorContainer.className = "validation-error-container";
+        errorContainer.className = 'validation-error-container';
         errorContainer.textContent = message;
         element.parentElement.appendChild(errorContainer);
     };
@@ -45,14 +45,14 @@ export class InlineStrategy extends ValidationStrategy
     };
 
     actionValidProperty = (element, property) => {
-        ClassHelper.removeClass(element, "invalid");
-        ClassHelper.addClass(element, "valid");
+        ClassHelper.removeClass(element, 'invalid');
+        ClassHelper.addClass(element, 'valid');
         this._removeErrorElement(element);
     }
 
     actionInvalidProperty = (element, property, error) => {
-        ClassHelper.removeClass(element, "valid");
-        ClassHelper.addClass(element, "invalid");
+        ClassHelper.removeClass(element, 'valid');
+        ClassHelper.addClass(element, 'invalid');
         this._addElementError(error, element);
     }
 }

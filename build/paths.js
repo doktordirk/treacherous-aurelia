@@ -3,7 +3,7 @@ var fs = require('fs');
 
 // hide warning //
 var emitter = require('events');
-emitter.defaultMaxListeners = 20;
+emitter.defaultMaxListeners = 5;
 
 var appRoot = 'src/';
 var pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
@@ -11,40 +11,26 @@ var pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
 var paths = {
   root: appRoot,
   source: appRoot + '**/*.js',
-  html: appRoot + '**/*.html',
   style: 'styles/**/*.css',
   output: 'dist/',
   doc:'./doc',
-  e2eSpecsSrc: 'test/e2e/src/*.js',
-  e2eSpecsDist: 'test/e2e/dist/',
+  test: 'test/**/*.js',
+  exampleSource: 'doc/example/',
+  exampleOutput: 'doc/example-dist/',
   packageName: pkg.name,
+  ignore: [],
   useTypeScriptForDTS: false,
-  importsToAdd: [],
+  importsToAdd: [], // eg. non-concated local imports in the main file as they will get removed during the build process
+  importsToIgnoreForDts: [], // imports that are only used internally. no need to d.ts export them
+  jsResources: [], // js to transpile, but not be concated and keeping their relative path
+  resources: appRoot + '{**/*.css,**/*.html}',
   sort: true,
-  styleSource: 'styles/input.less',
-  styleOutput: 'styles'
+  concat: true
 };
 
-paths.ignore = ['aurelia-dialog.js'];
-paths.files = [
-  'dialog-options.js',
-  'dialog-result.js',
-  'ai-dialog-body.js',
-  'ai-dialog-footer.js',
-  'ai-dialog-header.js',
-  'ai-dialog.js',
-  'attach-focus.js',
-  'lifecycle.js',
-  'dialog-controller.js',
-  'renderer.js',
-  'dialog-renderer.js',
-  'dialog-service.js',
-  'dialog-configuration.js',
-  'aurelia-dialog.js'
-  ].map(function(file){
-  return paths.root + file;
-});
-
-paths.sample = 'sample';
+// files to be traspiled (and concated if selected)
+paths.mainSource = [paths.source].concat(paths.jsResources.map(function(resource) {return '!' + resource;}));
+// files to be linted
+paths.lintSource = paths.source;
 
 module.exports = paths;

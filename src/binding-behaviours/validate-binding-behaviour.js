@@ -1,5 +1,5 @@
-import {inject, noView} from "aurelia-framework";
-import {ValidationStrategy} from "../strategy/validation-strategy";
+import {inject, noView} from 'aurelia-framework';
+import {ValidationStrategy} from '../strategy/validation-strategy';
 
 @inject(ValidationStrategy)
 @noView()
@@ -20,7 +20,7 @@ export class ValidateBindingBehavior
             { this.validationStrategy.actionInvalidProperty(element, propertyName, args.error); }
         };
 
-        let _validationPredicate = (x) => { console.log("pred", x.property, propertyName); return x.property == propertyName; };
+        let _validationPredicate = (x) => { console.log('pred', x.property, propertyName); return x.property == propertyName; };
 
         let _setupValidation = () => {
             return this.validationGroup.propertyStateChangedEvent.subscribe(_validationStateHandler, _validationPredicate);
@@ -63,6 +63,6 @@ export class ValidateBindingBehavior
     }
 
     _isWithinChildBinding(overrideContext) {
-        return overrideContext["$index"] || overrideContext["$even"] || overrideContext["$odd"];
+        return overrideContext['$index'] || overrideContext['$even'] || overrideContext['$odd'];
     }
 }

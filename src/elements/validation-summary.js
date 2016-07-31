@@ -1,7 +1,7 @@
-import {customElement, inlineView, inject, bindable} from "aurelia-framework";
+import {customElement, inlineView, inject, bindable} from 'aurelia-framework';
 
-@customElement("validation-summary")
-@inlineView('<template><ul class="validation-summary" show.bind="propertyErrors.length"><li repeat.for="error of propertyErrors">${error.property} - ${error.error}</li></ul></template>')
+@customElement('validation-summary')
+@inlineView("<template><ul class='validation-summary' show.bind='propertyErrors.length'><li repeat.for='error of propertyErrors'>${error.property} - ${error.error}</li></ul></template>")
 export class ValidationSummary {
 
     @bindable validationGroup;
@@ -13,7 +13,7 @@ export class ValidationSummary {
     bind(binding, scope) {
         var validationGroup  = this.validationGroup || scope.validationGroup;
 
-        if(!validationGroup) { throw new Error("No validation group in scope or explicitly provided"); }
+        if(!validationGroup) { throw new Error('No validation group in scope or explicitly provided'); }
 
         var refreshErrorSummary = () => {
             validationGroup.getModelErrors()

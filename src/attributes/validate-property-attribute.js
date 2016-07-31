@@ -1,5 +1,5 @@
-import {inject, customAttribute} from "aurelia-framework";
-import {ValidationStrategy} from "../strategy/validation-strategy";
+import {inject, customAttribute} from 'aurelia-framework';
+import {ValidationStrategy} from '../strategy/validation-strategy';
 
 @customAttribute('validate-property')
 @inject(Element, ValidationStrategy)
@@ -11,7 +11,7 @@ export class ValidateProperty {
     }
 
     _isWithinChildBinding(overrideContext) {
-        return overrideContext["$index"] || overrideContext["$even"] || overrideContext["$odd"];
+        return overrideContext['$index'] || overrideContext['$even'] || overrideContext['$odd'];
     }
 
     bind(binding, overrideContext) {

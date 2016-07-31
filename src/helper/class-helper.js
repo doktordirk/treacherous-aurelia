@@ -11,7 +11,7 @@ export class ClassHelper
         if (element.classList)
         { element.classList.add(className); }
         else if (!ClassHelper.hasClass(element, className))
-        { element.className += " " + className; }
+        { element.className += ' ' + className; }
     };
 
     static removeClass = (element, className) => {
